@@ -523,4 +523,362 @@ public class UserAccessReportFilter : Specification<AppUser>
 The output of this report can be viewed as follows.
 <img width="610" height="150" src="http://heilton.com/AUA_files/image009.jpg" >
 <img width="624" height="261" src="http://heilton.com/AUA_files/image011.jpg">
+<b>Calling SQL Stored Procedure in the AUA Framework</b>
+
+Most of the time, the programmer resorts to other ways like Ado.net and Dapper to easily work with the SQL Stored Procedure, not knowing that he can simply manage the number of connections made or create a separate context for it. SQL Stored Procedure is called easily in the AUA Framework and has none of the above problems.
+
+Example: Procedure call that gives the list of a user's access in the AUA framework is as follows:
+
+```SQl
+CREATE PROCEDURE [dbo].[uspGetUserRoles]
+@userId bigint
+AS
+
+ SELECT ROLE.Id as RoleId,ROLE.Title,ROLE.Description
+   FROM UserRole INNER JOIN ROLE
+     ON UserRole.RoleId=ROLE.Id
+ WHERE UserRole.AppUserId=@userId
+```
+We create a view model for the output of the procedure.
+
+```csharp
+ public class GetUserRolesSpResult
+    {
+        public int RoleId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+    }
+```
+To call a procedure in StoredProcContext, we add the following code.
+
+```csharp
+public IQueryable<GetUserRolesSpResult> GetUserRolesSp(long userId)
+        {
+            var cmd = LoadStoredProc(StoredProcedureConsts.GetUserRoles)
+                      .WithSqlParam("userId", userId);
+                  
+            return cmd
+                   .ExecuteStoredProc<GetUserRolesSpResult>();
+        }
+```
+
+To avoid the dispersal of the procedures' names, we place them in the class in a fixed order.
+
+```csharp
+ public class StoredProcedureConsts
+    {
+        public const string GetAppUsersCount = "uspGetAppUsersCount";
+        public const string GetUserRoles = "uspGetUserRoles";
+    }
+```
+
+The framework allows you to query the output of the procedure, but this is not correct, as it should write its own procedure for each task. The StoredProcService service, which includes all procedures, allows you to call your own processor.
+```csharp
+public class StoredProcService : FuncBaseService, IStoredProcService
+    {
+        public StoredProcService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+   
+        public IQueryable<GetUserRolesSpResult> GetUserRolesSp(long userId)\
+        {     
+            return UnitOfWork
+                   .StoredProc
+                   .GetUserRolesSp(userId);
+        }
+    }
+```
+<b>Working with SQL Function in AUA Framework</b>
+  One of the good features of the AUA framework is that it works with functions in the SQL Server to map their result to objects, and to write a LINQ query on their results, which can easily be done in AUA frameworks and it avoids generating a dirty code for this task.
+
+For example: We call with the AUA framework a function that takes the user code and returns its name.
+```csharp
+CREATE FUNCTION  [dbo].[GetUserName] (@userId BIGINT)
+RETURNS NVARCHAR(200) AS
+BEGIN
+    RETURN (SELECT UserName FROM AppUser WHERE Id=@userId)
+END
+```
+In SqlFunctionContext, you can add a new function call.
+
+```csharp
+    public class SqlFunctionContext
+
+    {
+
+
+        private readonly DbContext _dbContext;
+        public SqlFunctionContext(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public string GetUserName(long userId)
+        {
+            var resultParameter = new SqlParameter("@result", SqlDbType.NVarChar, 200)\
+            {
+                Direction = ParameterDirection.Output
+            };         
+            ExecuteSqlCommand($"SET @result=  dbo.GetUserName('{userId}')",resultParameter);
+            return resultParameter.Value as string;
+        }
+
+        private void ExecuteSqlCommand(string sqlCommand, IDbDataParameter resultParameter)
+        {
+            _dbContext?
+                .Database?
+                .ExecuteSqlCommand(sqlCommand, resultParameter);
+        }
+    }
+```
+
+ In the SqlFunctionService service, the function can be accessed and called.
+
+```csharp
+    public class SqlFunctionService : FuncBaseService, ISqlFunctionService
+    {
+        public SqlFunctionService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+
+        public string GetUserName(long userId)
+        {
+            return UnitOfWork
+                    .SqlFunction
+                    .GetUserName(userId);
+        }         
+    }
+```
+<b>Working with SQL Views in the AUA Framework</b>
+One of the concerns of .NET programmers is working with SQL Views so that they can map their results in objects and apply filters on the outputs of the view. The Entity Framework recognizes the views as a table, but the AUA framework makes it possible to map the view output to the objects and apply a filter to it.
+
+```csharp
+CREATE VIEW [dbo].[UserRolesVw] 
+AS
+SELECT AppUser.Id AS userId,AppUser.UserName,Role.Title
+  FROM AppUser INNER JOIN UserRole
+    ON AppUser.Id=UserRole.AppUserId
+          INNER JOIN Role
+       ON UserRole.RoleId=Role.Id
+
+```
+For the view output, we write a class that inherits from BaseView.
+
+```csharp
+public class UserRolesVw : BaseView
+ {
+        public long UserId { get; set; }
+        public string UserName { get; set; }
+        public string Title { get; set; }
+ }
+```
+We also make a View DTO for the View output (if we want to create a change in the View output, we apply it to the DTO).
+
+```csharp
+  public class UserRolesVwDto : IMapFrom<UserRolesVw>
+    {
+        public long UserId { get; set; }
+        public string UserName { get; set; }
+        public string Title { get; set; }
+    }
+```
+We also create a service to work with the view, where filters will be written for the view.
+
+Interface:
+```csharp
+public interface IUserRolesVwService : IBaseGenericService<UserRolesVw, UserRolesVwDto>
+{
+}
+```
+View Service:
+
+```csharp
+public class UserRolesVwService : BaseGenericService<UserRolesVw, UserRolesVwDto>, IUserRolesVwService
+    {
+        public UserRolesVwService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+
+        }
+    }
+```
+Functions that are added to the view service by default are as follows:
+
+ <ul>
+  <li><b>GetAll</b>This returns all entities and can be filtered. It also supports Async.
+
+</li>
+  <li><b>GetAllDto</b>This returns all entities and can be filtered. It also supports Async.
+
+GetAllDto
+
+This returns all entities in DTO format and can be filtered. It also supports Async.</li>
+  <li><b>GetCount</b>Number of entities - can be filtered.
+
+</li>
+  <li><b>GetFirst</b>This returns the first entity and can be filtered.
+
+</li>
+  <li><b>GetLast
+
+</b>This returns the last entity and can be filtered.
+
+</li>
+  <li><b>GetCountAsync</b>Number of entities – filterable; supporting Async
+
+</li>
+  <li><b>GetFirstAsync</b>GetFirstAsync</li>
+  <li><b>GetLastAsync</b>This returns the last entity and can be filtered; supporting Async
+
+</li>
+  <li><b>GetDtoById</b>Holding entity and mapping it in DTO format</li>
+  <li><b>GetByIdAsync</b>Holding entity with the primary key; supporting Async
+
+</li>
+  <li><b>GetDtoByIdAsync</b>Holding entity and mapping it in DTO format; supporting Async
+
+</li>
+  <li><b>ConvertTo</b>This converts a query result to another object based on configuration mapping
+
+</li>
+  <li><b>ProjectTo</b>This projects a query result to another object based on configuration mapping
+
+</li>
+</ul> 
+
+<b>Message Provider in the AUA framework</b>
+The AUA framework contains two types of Message Box, namely Html Messagebox and Dialog Messagebox.
+If we use HtmlMessages in View.csHtml, messages will be displayed in Html in the right color, if we use DialogMessages, they will be displayed in dialog, and if both models are loaded in the view, they will be displayed as Html and dialog.
+
+Messagebox Types:
+<b>NotifyMessage</b><br>
+<b>SuccessMessage</b><br>
+<b>ErrorMessage</b><br>
+<b>WarningMessage</b><br>
+<b>Message</b><br>
+
+Adding Message Provider to View.csHtml
+```csharp
+<div class="form-group">
+    <partial name="MessageProvider/HtmlMessages/_AllHtmlMessage" />
+</div>
+
+@* OR  *@
+
+<div class="form-group">
+    <partial name="MessageProvider/DialogMessages/_AllDialogMessage" />
+</div>
+```
+In the controller, we can easily send the message to the view and display it.
+
+```csharp
+   public IActionResult Index()
+   {
+            NotifyMessage("** NotifyMessage **");
+            SuccessMessage("** SuccessMessage **");
+            ErrorMessage("** ErrorMessage **");
+            WarningMessage("** WarningMessage **");
+            Message("** Message **");
+
+            return View();
+  }
+```
+Displaying messages as HtmlMessages
+
+<img width="456" height="238" src="http://heilton.com/AUA_files/image013.jpg" >
+<img width="467" height="229" src="http://heilton.com/AUA_files/image015.jpg" >
+
+Displaying messages as DialogMessages
+<img width="449" height="268" src="http://heilton.com/AUA_files/image017.jpg" >
+
+<b>Controlling the Exception Handling Error in the AUA Framework</b>
+One of the most important modules of the AUA framework is its error control module. This framework is perfect at error control and management. For example: When a user enters one of the actions, an expression occurs but the error page does is not displayed and the error text is displayed as a controlled message and the URL does not change.
+
+Anywhere we want to interrupt request processing a request, we can throw an Exception and interrupt the process, in which case the error is sent to the error control module.
+
+For example: If the user is not logged in, the request processing should be stopped and an error will be displayed.
+```csharp
+public IActionResult Index()
+{
+            if (CurrentUser is null)
+                throw new ClientException("Custom Error Exception");
+}  
+   
+ public IActionResult Index()
+  {
+            if (CurrentUser is null)
+                throw new ClientException("Custom Error Exception");
+}
+```
+Error management module and displaying it as a message
+
+<img width="624" height="98" src="http://heilton.com/AUA_files/image019.jpg" >
+
+<b>Schema of Tables in the AUA Framework</b>
+One of the security issues in SQL Server is the schema of tables. By default, the names of tables are stored with the dbo prefix in the SQL Server. It is easily possible to customize this schema in the AUA framework. 
+
+To manage and prevent the dispersal of constants in the program, we write them in the classes in a fixed order.
+
+```csharp
+public class SchemaConsts
+{
+        public const string Accounting = "Acc";
+        public const string School = "Sch"
+}
+```
+```csharp
+[Table("Student", Schema = SchemaConsts.School)]
+public class Student : DomainEntity
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+    }
+```
+Results of schema application in database
+
+<img width="239" height="198" src="http://heilton.com/AUA_files/image021.jpg" >
+
+<b>Working with the Setting File in the AUA Framework</b>
+One of the dirty codes found in most projects is how to read values from files like AppSetting.json, WebConfig, and setting files in ASp.net Core, which in most cases causes errors. In the AUA framework with appropriate design patterns, we read these files in Json, Xml. There are two types of setting files in Json and Xml formats (Setting.xml, and appsettings.json).
+
+The following code uses the appsettings.json file to read the value of the encryption key
+```csharp
+public class AppSetting
+    {
+
+        public static string GetDataEncryptionKey =>
+                                                   AppConfiguration
+                                                  .GetConfigurationRoot()
+                                                  .GetSection(AppSettingConsts.AppSetting)
+                                                  .GetSection(AppSettingConsts.DataEncryptionKey)
+                                                  .Value;
+    }
+```
+To read the value of the encryption key from the configuration file:
+
+Var dataEncryptionKey= AppSetting.GetDataEncryptionKey
+
+To work with the XML setting file, we have used the Xml Pattern(https://github.com/Heilton/XmlPattern)
+
+<b>Rest WebApi in the AUA Framework</b>
+ API is a software implementation interface that allows other applications to interact with it. It enables us to implement HTTP protocol-based services more easily than ever. Many service receivers, such as web browsers, mobile devices, and desktop applications, can take advantage of the capabilities of this platform (Web Api).
+ 
+ In the last layer of the AUA framework, we can use different technologies such as the MVC - Rest WebApi-Grpc- Graphql. JWT (Json web Token) technology can be implemented and used for WebApi access levels in the AUA framework.
+ 
+ Swagger is used for ease of use and WebApi testing. All the requirements for login and access levels using Token for the AUA framework are written in WebApi version and are ready for your business development.
+ 
+ <img border="0" width="624" height="240" src="http://heilton.com/AUA_files/image023.jpg" >
+ 
+ Note that the AUA framework can also be used for Windows form application, WPF, etc., because the last layer changes. The AUA framework is beyond the scope of this document. This document is just aimed at familiarizing you with how to work with the AUA framework. Using this document and tutorial videos, the programmer, regardless of his/her level, can work with this framework within just a week.
+ 
+ The AUA framework has tutorial videos for all stages and can be easily worked with. You can download the tutorial video on how to work with the AUA framework from the Hilton website at www.heilton.com or  www.youtube.com.
+ 
+  <ul>
+  <li><b>Email:</b> AUA_Framework@yahoo.com <br> mr_Lotfi@ymail.com</li>
+  <li><b>WebSite:</b>www.Heilton.com</li>
+  <li><b>Phone:</b>+98-9199906342</li>
+
+</ul> 
+ 
+ 
  
