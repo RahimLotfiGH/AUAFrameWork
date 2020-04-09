@@ -749,7 +749,7 @@ This returns all entities in DTO format and can be filtered. It also supports As
 The AUA framework contains two types of Message Box, namely Html Messagebox and Dialog Messagebox.
 If we use HtmlMessages in View.csHtml, messages will be displayed in Html in the right color, if we use DialogMessages, they will be displayed in dialog, and if both models are loaded in the view, they will be displayed as Html and dialog.
 
-Messagebox Types:
+Messagebox Types:<br>
 <b>NotifyMessage</b><br>
 <b>SuccessMessage</b><br>
 <b>ErrorMessage</b><br>
@@ -787,9 +787,8 @@ Displaying messages as HtmlMessages
 <img width="456" height="238" src="http://heilton.com/AUA_files/image013.jpg" >
 <img width="467" height="229" src="http://heilton.com/AUA_files/image015.jpg" >
 
-Displaying messages as DialogMessages
-<img width="449" height="268" src="http://heilton.com/AUA_files/image017.jpg" >
-
+Displaying messages as DialogMessages<br>
+<img width="449" height="268" src="http://heilton.com/AUA_files/image017.jpg" ><br>
 <b>Controlling the Exception Handling Error in the AUA Framework</b>
 One of the most important modules of the AUA framework is its error control module. This framework is perfect at error control and management. For example: When a user enters one of the actions, an expression occurs but the error page does is not displayed and the error text is displayed as a controlled message and the URL does not change.
 
