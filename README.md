@@ -93,6 +93,79 @@ public class BaseDomainEntity<TPrimaryKey> : IDomainEntity<TPrimaryKey>
 The AUA framework is open-Source and can be easily customized.<br>
 Monitoring fields:<br>
 You can add more monitoring fields to the entities if you wish depending on your business.<br>
-Monitoring Field Creating the ICreationAudited Entity<br>
+<b>Monitoring Field Creating the ICreationAudited Entity</b>
 
+```csharp
+public interface ICreationAudited
+ {
+     long CreatorUserId { get; set; }
+}
+```
+To add the monitoring field of CreatorUserId, we can simply implement the ICreationAudited interface for the DomainEntity class, as follows:
+```csharp
+public class DomainEntity<TPrimaryKey> : BaseDomainEntity<TPrimaryKey>, IAuditInfo, ICreationAudited
+{
+        public DateTime RegDate { get; set; }
+        public long CreatorUserId { get; set; }
+}
+```
+<b>Auditing fields of deleting the IDeletionAudited entity</b>
 
+The IDeletionAudited interface can be used to prevent the physical deletion and add the monitoring fields of entity deletion.
+```csharp
+ public interface IDeletionAudited: ISoftDelete
+{
+        long? DeleterUserId { get; set; }
+        DateTime? DeleteDate { get; set; }
+}
+```
+```csharp
+public interface ISoftDelete
+{
+        bool IsDeleted { get; set; }
+}
+```
+<b>Auditing fields for editing IModifiedAudited</b>
+
+The IModifiedAudited interface can be used to add monitoring fields for editing an entity.
+```csharp
+public interface IModifiedAudited
+{
+        long? ModifierUserId { get; set; }
+        DateTime? ModifyDate { get; set; }
+}
+```
+<b>Configuration of entities:</b>
+There is a configuration class for each entity that can specify the length of field settings for it.
+```csharp
+ public class StudentConfig : IEntityTypeConfiguration< Student>
+    {
+        public void Configure( EntityTypeBuilder<Student> builder)
+        {
+         builder
+                .Property(p => p.FirstName)
+                .HasMaxLength( LengthConsts.MaxStringLen50);
+
+            builder
+                .Property(p => p.LastName)
+                .HasMaxLength( LengthConsts.MaxStringLen50);
+        }
+}
+```
+e configure the entity with the combination key as follows. The AppUserId and RoleId fields are both<br>
+Keys to the UserRole entity<br>
+We configure the entity with the combination key as follows. The AppUserId and RoleId fields are both keys to the UserRole entity<br>
+
+```csharp
+   public class UserRoleConfig : IEntityTypeConfiguration<UserRole>
+{
+        public void Configure(EntityTypeBuilder< UserRole> builder)
+        {
+            builder.Ignore(p => p.Id);
+            
+            builder
+              .HasKey(p => new { p.AppUserId, p.RoleId });
+        }
+{      
+```
+<b>Models and Mapping:</b>
