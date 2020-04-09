@@ -37,28 +37,14 @@ AUA is a simple, lightweight framework for producing projects of any size (small
 <h2> AUA Framework's Overall Structure </h2>
 The different layers of the AUA framework are as follows:
 <ul>
-        <li><strong> Common Layer</strong>  This layer contains common items used in other layers, such as
- Enums, Consts, Extensions,… ، Tools</li>
-        <li><strong> Data Layer</strong>  Coffee</li>
-        <li><strong> </strong>  This layer contains items associated with the data source, including Entity Framework Context, Db Extensions, Search Filters, Unit of Work Pattern, Configuration Tools, and Dapper Context</li>
-        <li><strong>Domain Entity Layer </strong>  Coffee</li>
-        <li><strong> </strong>  This layer contains the entities and their configuration.
-
-</li>
-        <li><strong> Models Layer
-
-</strong>  This layer contains DTOs, View Models and Config mapping:
-
+        <li><strong> Common Layer</strong>  This layer contains common items used in other layers, such as Enums, Consts, Extensions,… ، Tools</li>      
+        <li><strong> Data Layer</strong>  This layer contains items associated with the data source, including Entity Framework Context, Db Extensions, Search Filters, Unit of Work Pattern, Configuration Tools, and Dapper Context</li>      
+        <li><strong> Domain Entity Layer</strong>  This layer contains the entities and their configuration.</li>
+        <li><strong> Models Layer</strong>  This layer contains DTOs, View Models and Config mapping:
 EntitiesDto, ReportModels, View Models ,</li>
-        <li><strong> Service Infrastructure Layer
-
-</strong>  The overall infrastructure of Services and Repository is written and becomes ready for use in this layer.</li>
-          <li><strong> Service Layer
-
-</strong>  This layer includes all the business services of your project, including BaseServices, BusinessService, EntitiesService, ReportService, etc.</li>
-            <li><strong> WebApi or Ui Mvc Layer
-
-</strong>This is an interface user layer that can be written with General MVC- WebApi- GraphQl- Grapc.</li>
+        <li><strong> Service Infrastructure Layer</strong>  The overall infrastructure of Services and Repository is written and becomes ready for use in this layer.</li>
+          <li><strong> Service Layer</strong>  This layer includes all the business services of your project, including BaseServices, BusinessService, EntitiesService, ReportService, etc.</li>
+            <li><strong> WebApi or Ui Mvc Layer</strong>This is an interface user layer that can be written with General MVC- WebApi- GraphQl- Grapc.</li>
               <li><strong> Test Layer</strong>  This layer is designed for writing Unit Tests (ToDo)</li>
                   <li><strong> External web service Layer</strong>  This layer is for calling external services. (ToDo)</li>
     </ul>
