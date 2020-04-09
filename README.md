@@ -166,6 +166,6 @@ We configure the entity with the combination key as follows. The AppUserId and R
             builder
               .HasKey(p => new { p.AppUserId, p.RoleId });
         }
-{      
+}      
 ```
 <b>Models and Mapping:</b>
