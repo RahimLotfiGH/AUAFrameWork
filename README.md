@@ -34,59 +34,12 @@ AUA is a simple, lightweight framework for producing projects of any size (small
 </ul> 
 
 
-<h2>AUA Framework's Overall Structure</h2>
+<h2> AUA Framework's Overall Structure </h2>
 The different layers of the AUA framework are as follows:
-  <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Layer's Name</th>
-                    <th>Use</th>                  
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Common Layer</td>
-                    <td>This layer contains common items used in other layers, such as Enums, Consts, Extensions,… ، Tools </td> 
-                </tr>
-                 <tr>
-                    <td>Data Layer</td>
-                    <td>This layer contains items associated with the data source, including Entity Framework Context, Db Extensions, Search Filters, Unit of Work Pattern, Configuration Tools, and Dapper Context </td>                  
-                </tr>
-                 <tr>
-                    <td>Domain Entity Layer</td>
-                    <td>This layer contains the entities and their configuration.</td>                  
-                </tr>
-                 <tr>
-                    <td>Models Layer</td>
-                    <td>This layer contains DTOs, View Models and Config mapping:
+<h2>Adding New Entity</h2>
+Entity is the main concept, and indeed at the heart of the architecture of, the AUA framework. Each entity is defined by a class that contains its features and its relation to other entities. Each entity has an identifier that can be of any Data Type allowed in .NET, or it can be a combination of two or more Data Types allowed therein (combination key).
 
-EntitiesDto, ReportModels, View Models ,…
-</td>                  
-                </tr>
-                 <tr>
-                    <td>Service Infrastructure Layer</td>
-                    <td>The overall infrastructure of Services and Repository is written and becomes ready for use in this layer.</td>                  
-                </tr>
-                 <tr>
-                    <td>Service Layer</td>
-                    <td>This layer includes all the business services of your project, including BaseServices, BusinessService, EntitiesService, ReportService, etc.</td>                  
-                </tr>
-                 <tr>
-                    <td>WebApi or Ui Mvc Layer</td>
-                    <td>This is an interface user layer that can be written with General MVC- WebApi- GraphQl- Grapc.</td>                  
-                </tr>
-                 <tr>
-                    <td>Test Layer</td>
-                    <td>This layer is designed for writing Unit Tests (ToDo)</td>                  
-                </tr>
-                 <tr>
-                    <td>External web service Layer
+<h2>Entity Class</h2>
+  Each entity inherits from the DomainEntity class, to which a primary key field called Id and one or more monitoring fields (depending on the setting type) are added.
 
-</td>
-                    <td>This layer is for calling external services. (ToDo)
 
-</td>                  
-                </tr>
-          
-            </tbody>
-        </table>
