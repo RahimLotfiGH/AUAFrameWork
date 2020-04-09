@@ -90,7 +90,7 @@ public class BaseDomainEntity<TPrimaryKey> : IDomainEntity<TPrimaryKey>
         public bool IsActive { get; set; }
 }
 ```
-The AUA framework is open-code and can be easily customized.<br>
+The AUA framework is open-Source and can be easily customized.<br>
 Monitoring fields:<br>
 You can add more monitoring fields to the entities if you wish depending on your business.<br>
 Monitoring Field Creating the ICreationAudited Entity<br>
