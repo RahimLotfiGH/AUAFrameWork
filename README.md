@@ -54,4 +54,27 @@ Entity is the main concept, and indeed at the heart of the architecture of, the 
 <h2>Entity Class</h2>
   Each entity inherits from the DomainEntity class, to which a primary key field called Id and one or more monitoring fields (depending on the setting type) are added.
 
+```csharp
+public class Student : DomainEntity
+{
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+}
+```
+It should be specified if the primary key has a data type other than the int data type (e.g. the Long data type is considered under the primary key)
+```csharp
+public class Student : DomainEntity<long>
+{
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+}
+```
+By default the following fields are added to each entity.
 
+The <b>Id</b> key of the primary key and its data type can be specified when defining an entity.
+
+The <b>IsActive </b>field shows whether the entity is active or inactive and it has a bool data type.
+
+The <b> RegDate</b> displays the date and time the entity is created (automatically created inside SQL Server) and does not need to be filled in and sent.
