@@ -71,10 +71,28 @@ public class Student : DomainEntity<long>
         public int Age { get; set; }
 }
 ```
-By default the following fields are added to each entity.
-
-The <b>Id</b> key of the primary key and its data type can be specified when defining an entity.
-
-The <b>IsActive </b>field shows whether the entity is active or inactive and it has a bool data type.
-
+By default the following fields are added to each entity.<br>
+The <b>Id</b> key of the primary key and its data type can be specified when defining an entity.<br>
+The <b>IsActive </b>field shows whether the entity is active or inactive and it has a bool data type.<br>
 The <b> RegDate</b> displays the date and time the entity is created (automatically created inside SQL Server) and does not need to be filled in and sent.
+
+```csharp
+public class DomainEntity<TPrimaryKey> : BaseDomainEntity<TPrimaryKey>, IAuditInfo
+{
+   public DateTime RegDate { get; set; }
+}
+```
+
+```csharp
+public class BaseDomainEntity<TPrimaryKey> : IDomainEntity<TPrimaryKey>
+{
+        public TPrimaryKey Id { get; set; }
+        public bool IsActive { get; set; }
+}
+```
+The AUA framework is open-code and can be easily customized.<br>
+Monitoring fields:<br>
+You can add more monitoring fields to the entities if you wish depending on your business.<br>
+Monitoring Field Creating the ICreationAudited Entity<br>
+
+
