@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<SystemSetting>
+		<AppName>AUA Framework</AppName>
+		<AppVersion>V1.0</AppVersion>
+		<EfConnectionString>Entity FrameWork Connection String</EfConnectionString>
+		<DapperConnectionString>Dapper Connection String</DapperConnectionString>
+	</SystemSetting>
+
+	<ServerSetting>
+		<ServerName> Server1 </ServerName>
+		<ServerIp>127.0.0.1</ServerIp>
+		<ServerLocation>Iran</ServerLocation>
+		<IsServerAvailable>True</IsServerAvailable>
+		<Ports>2200,27017,8045</Ports>
+	</ServerSetting>
+
+</root>

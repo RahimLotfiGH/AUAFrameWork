@@ -1,0 +1,262 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.InMemoryServices\\AUA.ProjectName.InMemoryServices.csproj": {}
+  },
+  "projects": {
+    "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Common\\AUA.ProjectName.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Common\\AUA.ProjectName.Common.csproj",
+        "projectName": "AUA.ProjectName.Common",
+        "projectPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Common\\AUA.ProjectName.Common.csproj",
+        "packagesPath": "C:\\Users\\ABC\\.nuget\\packages\\",
+        "outputPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ABC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.DomainEntities\\AUA.ProjectName.DomainEntities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.DomainEntities\\AUA.ProjectName.DomainEntities.csproj",
+        "projectName": "AUA.ProjectName.DomainEntities",
+        "projectPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.DomainEntities\\AUA.ProjectName.DomainEntities.csproj",
+        "packagesPath": "C:\\Users\\ABC\\.nuget\\packages\\",
+        "outputPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.DomainEntities\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ABC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Common\\AUA.ProjectName.Common.csproj": {
+                "projectPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Common\\AUA.ProjectName.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.InMemoryServices\\AUA.ProjectName.InMemoryServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.InMemoryServices\\AUA.ProjectName.InMemoryServices.csproj",
+        "projectName": "AUA.ProjectName.InMemoryServices",
+        "projectPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.InMemoryServices\\AUA.ProjectName.InMemoryServices.csproj",
+        "packagesPath": "C:\\Users\\ABC\\.nuget\\packages\\",
+        "outputPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.InMemoryServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ABC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Models\\AUA.ProjectName.Models.csproj": {
+                "projectPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Models\\AUA.ProjectName.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Models\\AUA.ProjectName.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Models\\AUA.ProjectName.Models.csproj",
+        "projectName": "AUA.ProjectName.Models",
+        "projectPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Models\\AUA.ProjectName.Models.csproj",
+        "packagesPath": "C:\\Users\\ABC\\.nuget\\packages\\",
+        "outputPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ABC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.DomainEntities\\AUA.ProjectName.DomainEntities.csproj": {
+                "projectPath": "F:\\GitRepos2\\auarelease\\WebApi\\DotNetCore5\\V1.0\\AUA.ProjectName\\AUA.ProjectName.DomainEntities\\AUA.ProjectName.DomainEntities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
