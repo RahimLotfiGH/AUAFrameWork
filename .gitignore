@@ -1,0 +1,11 @@
+﻿AUA.ProjectName/.vs/AUA.ProjectName/v16
+AUA.ProjectName/AUA.ProjectName.Common/obj
+AUA.ProjectName/AUA.ProjectName.DataLayer/obj
+AUA.ProjectName/AUA.ProjectName.DomainEntities/obj
+AUA.ProjectName/AUA.ProjectName.InMemoryServices/obj
+AUA.ProjectName/AUA.ProjectName.ManualMapping/obj
+AUA.ProjectName/AUA.ProjectName.Models/obj
+AUA.ProjectName/AUA.ProjectName.Services/obj
+AUA.ProjectName/AUA.ProjectName.Tests/obj
+AUA.ProjectName/AUA.ProjectName.ValidationServices/obj
+AUA.ProjectName/AUA.ProjectName.WebApi/obj

@@ -27,7 +27,7 @@ namespace AUA.ProjectName.Common.Consts
 
         public const string ErrorUrl = "~/ErrorHandler/Error";
 
-        public const string ExceptionHandler = "/Api/V1.0/ExceptionHandler/Index";
+        public const string ExceptionHandler = "/Api/ExceptionHandler/Index";
 
         public const int MinimumAccessTokenLength = 200;
 
