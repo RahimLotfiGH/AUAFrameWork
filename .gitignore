@@ -9,3 +9,13 @@ AUA.ProjectName/AUA.ProjectName.Services/obj
 AUA.ProjectName/AUA.ProjectName.Tests/obj
 AUA.ProjectName/AUA.ProjectName.ValidationServices/obj
 AUA.ProjectName/AUA.ProjectName.WebApi/obj
+AUA.ProjectName/.vs
+AUA.ProjectName/AUA.ProjectName.Common/bin
+AUA.ProjectName/AUA.ProjectName.DataLayer/bin
+AUA.ProjectName/AUA.ProjectName.DomainEntities/bin
+AUA.ProjectName/AUA.ProjectName.InMemoryServices/bin
+AUA.ProjectName/AUA.ProjectName.ManualMapping/bin
+AUA.ProjectName/AUA.ProjectName.Models/bin
+AUA.ProjectName/AUA.ProjectName.Services/bin
+AUA.ProjectName/AUA.ProjectName.ValidationServices/bin
+AUA.ProjectName/AUA.ProjectName.WebApi/bin
