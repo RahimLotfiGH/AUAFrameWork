@@ -41,7 +41,6 @@ namespace AUA.ProjectName.WebApi.AppConfiguration
             return new List<string>
             {
                 nameof(WebApiAuthorize),
-                nameof(AllowLoggedInAuthorization), 
                 nameof(OnlyHasAccessTokenAuthorization),
             };
         }
