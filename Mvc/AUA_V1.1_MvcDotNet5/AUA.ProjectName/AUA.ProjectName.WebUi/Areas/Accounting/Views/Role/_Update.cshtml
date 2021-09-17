@@ -1,0 +1,37 @@
+﻿@model RoleActionVm
+
+@await Component.InvokeAsync("ModalForm", new ModalFormVm
+{
+    ModalFormId = "_updateModalForm",
+    ActionName = "_Update",
+    ModalSize = "modal-lg",
+    Title = "Update app user",
+    BtnTitle = "Update",
+    ViewContent =
+        @<text>
+
+            <input asp-for="RoleDto.Id" type="hidden" />
+            <div class="row pt-3 px-3 justify-content-center">
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="RoleDto.Title"></label>
+                    <input asp-for="RoleDto.Title" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="RoleDto.IsActive"></label>
+                    <br />
+                    <input asp-for="RoleDto.IsActive">
+                </div>
+
+                <div class="col-12 col-md-12 col-sm-12  input-effect">
+                    <label asp-for="RoleDto.Description"></label>
+                    <input asp-for="RoleDto.Description" class="form-control  effect">
+                </div>
+
+            </div>
+            <br />
+            <partial name="_ShowUserAccess" model="Model" />
+            <br />
+        </text>
+});

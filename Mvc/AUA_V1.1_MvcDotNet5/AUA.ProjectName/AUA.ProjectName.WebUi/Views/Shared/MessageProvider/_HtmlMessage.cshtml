@@ -1,0 +1,52 @@
+﻿@{
+    var messageProvider = TempData[MessageTypeConsts.MessageProvider];
+
+    if (messageProvider != null)
+    {
+        var messages = messageProvider
+            .ToString()
+            .ObjectDeserialize<List<MessageProviderVm>>();
+
+        if (messages.Any())
+        {
+
+            @foreach (var message in messages)
+            {
+                if (message.MessageType == MessageTypeConsts.Message)
+                {
+                    <div class="alert alert-primary" role="alert">
+                        @Html.Raw(message.Message)
+                    </div>
+                }
+                if (message.MessageType == MessageTypeConsts.Error)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @Html.Raw(message.Message)
+                    </div>
+                }
+                if (message.MessageType == MessageTypeConsts.Notify)
+                {
+                    <div class="alert alert-info" role="alert">
+                        @Html.Raw(message.Message)
+                    </div>
+
+                }
+                if (message.MessageType == MessageTypeConsts.Success)
+                {
+                    <div class="alert alert-success" role="alert">
+                        @Html.Raw(message.Message)
+                    </div>
+                }
+                if (message.MessageType == MessageTypeConsts.Warning)
+                {
+                    <div class="alert alert-warning" role="alert">
+                        @Html.Raw(message.Message)
+                    </div>
+                }
+            }
+
+            TempData.Remove(MessageTypeConsts.MessageProvider);
+        }
+    }
+}
+

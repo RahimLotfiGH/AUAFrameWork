@@ -1,0 +1,52 @@
+﻿@{
+    var messageProvider = TempData[MessageTypeConsts.MessageProvider];
+
+    if (messageProvider != null)
+    {
+        var messages = messageProvider
+            .ToString()
+            .ObjectDeserialize<List<MessageProviderVm>>();
+
+        if (messages.Any())
+        {
+            <script>
+                @foreach (var message in messages)
+                {
+                    if (message.MessageType == MessageTypeConsts.Message)
+                    {
+                        <text>
+                          swal('@message.Message');
+                        </text>
+                    }
+                    if (message.MessageType == MessageTypeConsts.Error)
+                    {
+                        <text>
+                            swal("Error!", '@message.Message', "error");
+                        </text>
+                    }
+                    if (message.MessageType == MessageTypeConsts.Notify)
+                    {
+                        <text>
+                            swal("info!", '@message.Message', "info");
+                        </text>
+                    }
+                    if (message.MessageType == MessageTypeConsts.Success)
+                    {
+                        <text>
+                            swal("success!", '@message.Message', "success");
+                        </text>
+                    }
+                    if (message.MessageType == MessageTypeConsts.Warning)
+                    {
+                        <text>
+                         swal("warning!", '@message.Message', "warning");
+                        </text>
+                    }
+                }
+            </script>
+
+            TempData.Remove(MessageTypeConsts.MessageProvider);
+        }
+    }
+}
+

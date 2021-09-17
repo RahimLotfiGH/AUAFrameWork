@@ -1,0 +1,38 @@
+﻿@model RoleActionVm
+
+@await Component.InvokeAsync("ModalForm", new ModalFormVm
+{
+    ModalFormId = "_insertModalForm",
+    ActionName = "_Insert",
+    ModalSize = "modal-lg",
+    Title = "New app user",
+    BtnTitle = "Save",
+    ViewContent =
+        @<text>
+            <div class="row pt-1 px-1 justify-content-center">
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="RoleDto.Title"></label>
+                    <input asp-for="RoleDto.Title" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="RoleDto.IsActive"></label>
+                    <br />
+                    <input asp-for="RoleDto.IsActive">
+                </div>
+
+                <div class="col-12 col-md-12 col-sm-12  input-effect">
+                    <label asp-for="RoleDto.Description"></label>
+                    <input asp-for="RoleDto.Description" class="form-control  effect">
+                </div>
+
+            </div>
+            <br/>
+            <strong>UserAccess</strong>
+            <hr />
+            <partial name="_ShowUserAccess" model="Model" />
+            <br />
+        </text>
+})
+

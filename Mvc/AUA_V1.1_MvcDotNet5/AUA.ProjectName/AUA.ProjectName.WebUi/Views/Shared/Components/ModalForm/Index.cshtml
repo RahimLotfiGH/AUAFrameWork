@@ -1,0 +1,33 @@
+﻿@model ModalFormVm
+<div class="modal" id="@Model.ModalFormId">
+    <div class="modal-dialog @Model.ModalSize">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span data-dismiss="modal">&times</span>
+                <h6>@Model.Title</h6>
+            </div>
+            <form asp-action="@Model.ActionName">
+                <div class="modal-body">
+                    @Model.ViewContent.DynamicInvoke(ViewContext)
+                </div>
+                @if (!Model.HiddenButtons)
+                {
+                    <div class="modal-footer pt-4">
+
+                        @if (!Model.HiddenSubmitButton)
+                        {
+                            <button type="submit" class="btn btn-success btn-sm">@Model.BtnTitle</button>
+                        }
+
+                        @if (!Model.HiddenCancelButton)
+                        {
+                            <button type="button" class="btn btn-danger btn-sm mr-1" data-dismiss="modal">Cancel</button>
+                        }
+
+                    </div>
+                }
+
+            </form>
+        </div>
+    </div>
+</div>

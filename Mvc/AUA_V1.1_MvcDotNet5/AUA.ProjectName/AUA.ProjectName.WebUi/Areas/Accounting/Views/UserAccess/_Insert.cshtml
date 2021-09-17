@@ -1,0 +1,62 @@
+﻿@model UserAccessDto
+
+@await Component.InvokeAsync("ModalForm", new ModalFormVm
+{
+    ModalFormId = "_InsertModal",
+    ActionName = "_Insert",
+    ModalSize = "modal-lg",
+    Title = "New app user",
+    BtnTitle = "Save",
+    ViewContent =
+        @<text>
+            <div class="row pt-3 px-3 justify-content-center">
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AccessCode"></label>
+                    <select asp-for="AccessCode" asp-items="Html.GetEnumSelectList<EUserAccess>()" class="form-control  effect">
+                    </select>
+                </div>
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="PageTitle"></label>
+                    <input asp-for="PageTitle" class="form-control  effect">
+                </div>
+
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="Url"></label>
+                    <input asp-for="Url" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="ParentId"></label>
+                    <input asp-for="ParentId" class="form-control effect">
+                </div>
+                <div class="col-12 col-md-6 col-sm-12  input-effect">
+                    <label asp-for="PageDescription"></label>
+                    <input asp-for="PageDescription" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <input asp-for="IsIndirect">
+                    <label asp-for="IsIndirect"></label>
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <input asp-for="IsActive">
+                    <label asp-for="IsActive"></label>
+                </div>
+
+              
+                <br />
+                <hr />
+
+            </div>
+
+        </text>
+})
+

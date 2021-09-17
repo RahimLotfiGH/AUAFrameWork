@@ -1,0 +1,18 @@
+﻿@model LoginVm
+@{
+    Layout = "_SinglePageLayout";
+}
+<div class="sufee-login d-flex align-content-center flex-wrap">
+    <div class="container">
+        <div class="login-content">
+            <div class="login-form">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="~/adminDashboard/images/logo.png" style="height: 50px; width: 50px;" alt="Asp.Net Unique Architecture">
+                    </a>
+                </div>
+                <partial name="_FormLogin" model="Model"/>
+            </div>
+        </div>
+    </div>
+</div>

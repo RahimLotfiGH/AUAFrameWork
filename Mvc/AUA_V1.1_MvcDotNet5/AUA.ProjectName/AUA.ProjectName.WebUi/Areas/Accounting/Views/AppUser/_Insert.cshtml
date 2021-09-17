@@ -1,0 +1,55 @@
+﻿@model AppUserActionVm
+
+@await Component.InvokeAsync("ModalForm", new ModalFormVm
+{
+    ModalFormId = "_insertModalForm",
+    ActionName = "_Insert",
+    ModalSize = "modal-lg",
+    Title = "New app user",
+    BtnTitle = "Save",
+    ViewContent =
+        @<text>
+            <div class="row pt-4 px-2 justify-content-center">
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto. FirstName"></label>
+                    <input asp-for="AppUserDto.FirstName" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.LastName"></label>
+                    <input asp-for="AppUserDto.LastName" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.UserName"></label>
+                    <input asp-for="AppUserDto.UserName" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.Password"></label>
+                    <input asp-for="AppUserDto.Password" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.Email"></label>
+                    <input asp-for="AppUserDto.Email" class="form-control effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.Phone"></label>
+                    <input asp-for="AppUserDto.Phone" class="form-control effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.IsActive"></label>
+                
+                    <input asp-for="AppUserDto.IsActive">
+                </div>
+
+            </div>
+            <strong>Roles</strong>
+            <hr />
+            <partial name="_ShowUserRole" model="Model" />
+            <br />
+        </text>
+})

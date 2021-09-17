@@ -1,0 +1,28 @@
+﻿@model LoginVm
+
+<form asp-area="Accounting" asp-controller="Account" asp-action="Login">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input class="form-control" asp-for="UserName">
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input type="password" class="form-control" asp-for="Password">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input asp-for="RememberMe"> Remember Me
+        </label>
+        <label class="pull-right">
+            <a href="#">Forgotten Password?</a>
+        </label>
+
+    </div>
+    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+
+    <div class="register-link m-t-15 text-center">
+        <p>Don't have an account ? <a href="#"> Sign Up Here</a></p>
+    </div>
+    <partial name="MessageProvider/_HtmlMessage" />
+   
+</form>

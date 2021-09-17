@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BusinessService\Sample\Contracts\" />
+    <Folder Include="BusinessService\Sample\" />
+    <Folder Include="BusinessService\Sample\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AUA.ProjectName.DataLayer\AUA.ProjectName.DataLayer.csproj" />
+    <ProjectReference Include="..\AUA.ProjectName.InMemoryServices\AUA.ProjectName.InMemoryServices.csproj" />
+    <ProjectReference Include="..\AUA.ProjectName.ManualMapping\AUA.ProjectName.ManualMapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AUA.Mapping">
+      <HintPath>..\AUACore\AUA.Mapping.dll</HintPath>
+    </Reference>
+    <Reference Include="AUA.ServiceInfrastructure">
+      <HintPath>..\AUACore\AUA.ServiceInfrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

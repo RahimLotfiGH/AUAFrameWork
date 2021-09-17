@@ -1,0 +1,49 @@
+﻿@model IEnumerable<UserAccessDto>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="float-right">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#_InsertModal">New</button>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>UserAccess</th>
+                            <th>Title</th>
+                            <th>PageTitle</th>
+                            <th>IsActive</th>
+                            <th>PageDescription</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in Model)
+                        {
+                        <tr>
+                            <td>@row.AccessCode</td>
+                            <td>@row.Title</td>
+                            <td>@row.PageTitle</td>
+                            <td>@row.IsActive</td>
+                            <td>@row.PageDescription</td>
+                            <td>
+                                <button class="btn btn-info btn-sm" onclick="showUpdateModalForm(@row.Id);">Update</button> |
+                                <button class="btn btn-danger btn-sm" onclick="deleteConfirm(@row.Id);">Delete</button>
+                            </td>
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

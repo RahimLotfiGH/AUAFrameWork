@@ -1,0 +1,20 @@
+﻿@model FilterFormVm
+<div class="card">
+    <h6 class="card-header">
+        <a class="d-block" data-toggle="collapse" href="#collapse-collapsed" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+            <i class="fa fa-chevron-down pull-right"></i>
+            @Model.Title
+        </a>
+    </h6>
+    <div id="collapse-collapsed" class="collapse show" aria-labelledby="heading-collapsed">
+        <div class="card-body">
+            <form asp-action="@Model.ActionName">
+                @Model.ViewContent.DynamicInvoke(ViewContext)
+                <div class="p-1">
+                    <button type="submit" class="btn btn-warning btn-sm">@Model.BtnTitle</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

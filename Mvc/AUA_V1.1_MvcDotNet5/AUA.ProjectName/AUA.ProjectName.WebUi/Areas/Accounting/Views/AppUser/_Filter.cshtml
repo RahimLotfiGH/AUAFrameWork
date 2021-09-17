@@ -1,0 +1,59 @@
+﻿@model AppUserSearchVm
+
+@await Component.InvokeAsync("Filter", new FilterFormVm
+{
+    ActionName = "Index",
+    Title = "Filter",
+    BtnTitle = "Search",
+    ViewContent =
+    @<text>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-3 col-sm-5  input-effect">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control  effect">
+            </div>
+
+            <div class="col-12 col-md-3 col-sm-5  input-effect">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control  effect">
+            </div>
+
+            <div class="col-12 col-md-3 col-sm-5  input-effect">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control  effect">
+            </div>
+
+            <div class="col-12 col-md-3 col-sm-5  input-effect">
+                <label asp-for="IsActive"></label>
+                <br />
+                <select asp-for="IsActive" asp-items="GetRecordStatus()" class="form-control"></select>
+            </div>
+
+        </div>
+    </text>
+})
+
+@functions
+{
+    private static IEnumerable<SelectListItem> GetRecordStatus()
+    {
+        return new List<SelectListItem>
+{
+            new()
+            {
+                Value = "null",
+                Text =  "No Select"
+            },
+            new()
+            {
+                Value = true.ToString(),
+                Text =  ERecordStatus.Active.ToDescription()
+            },
+            new()
+            {
+                Value = false.ToString(),
+                Text =  ERecordStatus.DeActive.ToDescription()
+            },
+        };
+    }
+}

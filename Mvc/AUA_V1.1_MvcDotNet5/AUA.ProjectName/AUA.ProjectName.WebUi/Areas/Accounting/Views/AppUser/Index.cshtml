@@ -1,0 +1,15 @@
+﻿
+@model ListResultVm<AppUserListDto>
+
+@{
+    ViewData["PageTitle"] = "Users";
+
+    Layout = "DashboardLayout/Admin/_AdminDashboardLayout";
+
+    await Html.RenderPartialAsync("_Filter",new AppUserSearchVm());
+
+    await Html.RenderPartialAsync("_Grid", Model.ResultVms);
+
+}
+
+<partial name="_IndexJs" />

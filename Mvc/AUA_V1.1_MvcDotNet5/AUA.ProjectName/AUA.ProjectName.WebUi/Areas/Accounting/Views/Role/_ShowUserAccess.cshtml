@@ -1,0 +1,17 @@
+﻿@model RoleActionVm
+
+<div class="row">
+    @{
+        foreach (var userAccess in Model.UserAccessVms)
+        {
+            var isChecked = Model.RoleDto?.UserRoleAccess.Any(p => p.UserAccessId == userAccess.Id);
+            <div class="col-12 col-md-4 col-sm-5  input-effect">
+
+                <input name="UserAccessIds" id="UserAccessIds" value="@userAccess.Id" checked="@isChecked" type="checkbox">
+                <span>@userAccess.Title</span>
+            </div>
+
+        }
+    }
+
+</div>

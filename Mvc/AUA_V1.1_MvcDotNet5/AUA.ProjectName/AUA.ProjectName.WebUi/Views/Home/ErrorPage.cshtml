@@ -1,0 +1,11 @@
+﻿@model ErrorPageVm
+
+<div class="text-center p-5">
+    <div class="alert alert-danger" role="alert">
+        @Model.Message
+    </div>
+    <div class="alert alert-warning" role="alert">
+        <strong>ErrorCode:</strong>  @Model.ErrorCode
+    </div>
+    <p><a href="~/" class="btn btn-info">Back</a></p>
+</div>

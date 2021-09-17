@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AppUserListDto>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="float-right">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showInsertModalForm();">New</button>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>FullName</th>
+                            <th>UserName</th>
+                            <th>IsActive</th>
+                            <th>Email</th>
+                            <th>RegistrationDate</th>
+                            <th>Phone</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in Model)
+                        {
+                            <tr>
+                                <td>@row.FullName</td>
+                                <td>@row.UserName</td>
+                                <td>@row.IsActive</td>
+                                <td>@row.Email</td>
+                                <td>@row.RegistrationDate</td>
+                                <td>@row.Phone</td>
+                                <td><button class="btn btn-info btn-sm" onclick="showUpdateModalForm(@row.Id);">Update</button> | 
+                                    <button class="btn btn-danger btn-sm" onclick="deleteConfirm(@row.Id);">Delete</button></td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

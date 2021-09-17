@@ -1,0 +1,52 @@
+﻿@model AppUserActionVm
+
+@await Component.InvokeAsync("ModalForm", new ModalFormVm
+{
+    ModalFormId = "_updateModalForm",
+    ActionName = "_Update",
+    ModalSize = "modal-lg",
+    Title = "Update app user",
+    BtnTitle = "Update",
+    ViewContent =
+        @<text>
+
+            <input asp-for="AppUserDto.Id" type="hidden" />
+
+            <div class="row pt-4 px-2 justify-content-center">
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.FirstName"></label>
+                    <input asp-for="AppUserDto.FirstName" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.LastName"></label>
+                    <input asp-for="AppUserDto.LastName" class="form-control  effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.UserName"></label>
+                    <input asp-for="AppUserDto.UserName" class="form-control  effect">
+                </div>
+
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.Email"></label>
+                    <input asp-for="AppUserDto.Email" class="form-control effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <label asp-for="AppUserDto.Phone"></label>
+                    <input asp-for="AppUserDto.Phone" class="form-control effect">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-5  input-effect">
+                    <input asp-for="AppUserDto.IsActive">
+                    <label asp-for="AppUserDto.IsActive"></label>
+                </div>
+            </div>
+            <strong>Roles</strong>
+            <hr />
+            <partial name="_ShowUserRole" model="Model" />
+            <br />
+        </text>
+});

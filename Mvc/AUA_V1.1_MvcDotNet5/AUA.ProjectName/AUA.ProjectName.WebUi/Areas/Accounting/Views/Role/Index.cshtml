@@ -1,0 +1,12 @@
+﻿@model IEnumerable<RoleDto>
+
+@{
+    ViewData["PageTitle"] = "Users";
+
+    Layout = "DashboardLayout/Admin/_AdminDashboardLayout";
+
+    await Html.RenderPartialAsync("_Grid", Model);
+
+}
+
+<partial name="_IndexJs" />

@@ -1,0 +1,12 @@
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\bin\Debug\net5.0\AUA.ProjectName.Common.deps.json
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\bin\Debug\net5.0\AUA.ProjectName.Common.dll
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\bin\Debug\net5.0\ref\AUA.ProjectName.Common.dll
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\bin\Debug\net5.0\AUA.ProjectName.Common.pdb
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\AUA.ProjectName.Common.csprojAssemblyReference.cache
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\AUA.ProjectName.Common.GeneratedMSBuildEditorConfig.editorconfig
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\AUA.ProjectName.Common.AssemblyInfoInputs.cache
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\AUA.ProjectName.Common.AssemblyInfo.cs
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\AUA.ProjectName.Common.csproj.CoreCompileInputs.cache
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\AUA.ProjectName.Common.dll
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\ref\AUA.ProjectName.Common.dll
+F:\GitRepos2\auarelease\MVC\V1.1\4_AddAUACore\AUA.ProjectName\AUA.ProjectName.Common\obj\Debug\net5.0\AUA.ProjectName.Common.pdb

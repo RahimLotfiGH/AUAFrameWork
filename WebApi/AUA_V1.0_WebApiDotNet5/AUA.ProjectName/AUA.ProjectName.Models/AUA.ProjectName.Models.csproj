@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AUA.ProjectName.DomainEntities\AUA.ProjectName.DomainEntities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BaseModel\BaseMapping\" />
+    <Folder Include="LocalInMemoryModels\" />
+    <Folder Include="ReportModels\" />
+    <Folder Include="ViewModels\Accounting\UserAccessModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AUA.Mapping">
+      <HintPath>..\AUACore\AUA.Mapping.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

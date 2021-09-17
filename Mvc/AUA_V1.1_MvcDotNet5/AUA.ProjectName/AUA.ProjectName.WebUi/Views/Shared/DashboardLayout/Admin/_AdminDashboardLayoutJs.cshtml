@@ -1,0 +1,85 @@
+﻿<script>
+
+    function showUpdateModalForm(keyId) {
+        const url = _updateUrl.replace("__", keyId);
+
+        $.get(url, function (data) {
+            $('#modal-form-placeholder').html(data);
+
+            $('#_updateModalForm').modal('show');
+        });
+    }
+
+    function showInsertModalForm() {
+        $.get(_insertUrl, function (data) {
+            $('#modal-form-placeholder').html(data);
+
+            $('#_insertModalForm').modal('show');
+        });
+    }
+
+    $(function () {
+        var placeholderElement = $('#modal-form-placeholder');
+
+        $('button[data-toggle="ajax-modal"]').click(function (event) {
+            var url = $(this).data('url');
+            $.get(url).done(function (data) {
+                placeholderElement.html(data);
+                placeholderElement.find('.modal').modal('show');
+            });
+        });
+
+        placeholderElement.on('click', '[data-save="modal"]', function (event) {
+            event.preventDefault();
+
+            var form = $(this).parents('.modal').find('form');
+            var actionUrl = form.attr('action');
+            var dataToSend = form.serialize();
+
+            $.post(actionUrl, dataToSend).done(function (data) {
+                var newBody = $('.modal-body', data);
+                placeholderElement.find('.modal-body').replaceWith(newBody);
+
+                var isValid = newBody.find('[name="IsValid"]').val() == 'True';
+                if (isValid) {
+                    placeholderElement.find('.modal').modal('hide');
+                }
+            });
+        });
+    });
+
+
+    function deleteConfirm(id) {
+        swal({
+            title: "Are you sure?",
+            text: "Delete this Record ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        },
+            function () {
+
+                deleteAction(id);
+
+
+            });
+    }
+
+    function deleteAction(id) {
+        const url = _deleteUrl.replace("__", id);
+
+        $.get(url,
+            function (data) {
+                if (data === true) {
+
+                    window.location.reload(false);
+
+                } else {
+                    swal("Error!", 'You are unable to delete this record', "error");
+                }
+
+            });
+    }
+</script>
