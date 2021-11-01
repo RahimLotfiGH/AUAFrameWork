@@ -39,3 +39,5 @@ Mvc/V1.1_DotNet5/AUA.ProjectName/AUA.ProjectName.InMemoryServices/obj
 Mvc/V1.1_DotNet5/AUA.ProjectName/AUA.ProjectName.DomainEntities/obj
 Mvc/V1.1_DotNet5/AUA.ProjectName/AUA.ProjectName.DataLayer/obj
 Mvc/V1.1_DotNet5/AUA.ProjectName/.vs/AUA.ProjectName/v16/.suo
+Mvc/V1.1_DotNet5/AUA.ProjectName/AUA.ProjectName.Common/bin
+Mvc/V1.1_DotNet5/AUA.ProjectName/AUA.ProjectName.Tests/bin
