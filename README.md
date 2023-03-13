@@ -31,7 +31,6 @@ AUA is a simple, lightweight framework for producing projects of any size (small
   <li>EF 6 and EF Core 3.0,3.1</li>
   <li>Based on SOLID Principles</li>
   <li>Modular design</li>
-  <li>Modular design</li>
   <li>Layered architecture</li>
 </ul> 
 
